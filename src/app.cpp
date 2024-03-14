@@ -7,10 +7,10 @@
 #include <string>
 #include <vector>
 
-#include "utils.hpp"
-#include "core.hpp"
-#include "commands.hpp"
-#include "bootstrap.hpp"
+#include "lib/utils.hpp"
+#include "lib/core.hpp"
+#include "lib/commands.hpp"
+#include "lib/bootstrap.hpp"
 
 int main() {
   App app = bootstrap();
