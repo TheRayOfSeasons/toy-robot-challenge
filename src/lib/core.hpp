@@ -135,11 +135,16 @@ class App {
     input = utils::toupper(input);
     utils::trim(input);
     std::string prefix = utils::splitString(input, ' ')[0];
-    auto command = this->commands[prefix];
-    if (command->requireConfigured() && !this->robot->isConfigured()) {
+    std::string output;
+    try {
+      auto command = this->commands[prefix];
+      if (command->requireConfigured() && !this->robot->isConfigured()) {
+        return "";
+      }
+      output = command->run(input, this->robot);
+    } catch (std::exception& e) {
       return "";
     }
-    std::string output = command->run(input, this->robot);
     return output;
   }
 };
