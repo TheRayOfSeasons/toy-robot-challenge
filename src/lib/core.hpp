@@ -159,6 +159,9 @@ class App {
     std::string output;
     try {
       auto command = this->commands[prefix];
+      if (!command) {
+        return "";
+      }
       if (command->requireConfigured() && !this->robot->isConfigured()) {
         return "";
       }
