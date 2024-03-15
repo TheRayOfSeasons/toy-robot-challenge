@@ -2,6 +2,8 @@ version: '2'
 
 services:
   robot:
+    container_name: toy-robot
+    tty: true
     build:
       context: ./
       dockerfile: Dockerfile
