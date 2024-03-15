@@ -50,12 +50,12 @@ class PlaceCommand : public Command {
     } catch (std::exception& e) {
       // Fail softly. No need to do anything for invalid outputs.
       return "Invalid PLACE arguments. Should be using format like: PLACE "
-             "0,0,NORTH";
+             "0,0,NORTH\n";
     }
     bool directionSet = false;
     std::string invalidDirectionMessage =
         "Received invalid direction. Should only be one of the following: "
-        "NORTH, WEST, SOUTH, EAST";
+        "NORTH, WEST, SOUTH, EAST\n";
     try {
       directionSet = robot->setDirection(direction);
     } catch (std::exception& e) {
