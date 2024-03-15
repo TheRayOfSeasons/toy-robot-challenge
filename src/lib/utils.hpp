@@ -1,5 +1,8 @@
 namespace utils {
-  // TAKEN from: https://favtutor.com/blogs/split-string-cpp
+  /**
+   * Splits a string into an array.
+   * TAKEN from: https://favtutor.com/blogs/split-string-cpp
+   */
   std::vector<std::string> splitString(std::string str, char separator) {
     std::vector<std::string> strings;
     int startIndex = 0, endIndex = 0;
@@ -16,18 +19,20 @@ namespace utils {
     return strings;
   }
 
-  // TAKEN from:
-  // https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring trim from
-  // start (in place)
+  /**
+   * Trims a string from the start.
+   * TAKEN from: https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
+   */
   inline void ltrim(std::string& s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
               return !std::isspace(ch);
             }));
   }
 
-  // TAKEN from:
-  // https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring trim from
-  // end (in place)
+  /**
+   * Trims a string from the end.
+   * TAKEN from: https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
+   */
   inline void rtrim(std::string& s) {
     s.erase(std::find_if(s.rbegin(), s.rend(),
                         [](unsigned char ch) { return !std::isspace(ch); })
@@ -35,15 +40,19 @@ namespace utils {
             s.end());
   }
 
-  // TAKEN from:
-  // https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring trim from
-  // both ends (in place)
+  /**
+   * Trims a string.
+   * TAKEN from: https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
+   */
   inline void trim(std::string& s) {
     rtrim(s);
     ltrim(s);
   }
 
-  // TAKEN from: https://stackoverflow.com/questions/735204/convert-a-string-in-c-to-upper-case
+  /**
+   * Transforms an entire string to uppercase.
+   * TAKEN from: https://stackoverflow.com/questions/735204/convert-a-string-in-c-to-upper-case
+   */
   std::string toupper(std::string str) {
     std::transform(str.begin(), str.end(), str.begin(), ::toupper);
     return str;

@@ -1,3 +1,6 @@
+/**
+ * A command that moves the robot forwards to the direction it is facing.
+ */
 class MoveCommand : public Command {
  public:
   std::string run(std::string input, Robot* robot) override {
@@ -21,6 +24,9 @@ class MoveCommand : public Command {
   }
 };
 
+/**
+ * A command that places the robot in an arbitrary position that the user desires.
+ */
 class PlaceCommand : public Command {
  public:
   bool requireConfigured() override { return false; };
@@ -53,6 +59,9 @@ class PlaceCommand : public Command {
   }
 };
 
+/**
+ * A command that turns the robot left relative to the current direction it is facing.
+ */
 class LeftCommand : public Command {
  public:
   std::string run(std::string input, Robot* robot) override {
@@ -76,6 +85,9 @@ class LeftCommand : public Command {
   }
 };
 
+/**
+ * A command that turns the robot right relative to the current direction it is facing.
+ */
 class RightCommand : public Command {
  public:
   std::string run(std::string input, Robot* robot) override {
@@ -99,6 +111,9 @@ class RightCommand : public Command {
   }
 };
 
+/**
+ * A command that reports the current status of the robot.
+ */
 class ReportCommand : public Command {
  public:
   std::string run(std::string input, Robot* robot) override {

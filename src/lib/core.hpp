@@ -1,3 +1,6 @@
+/**
+ * An abstract representation of 2D vectors and points.
+ */
 class Vector2 {
  public:
   int x;
@@ -43,12 +46,18 @@ enums::Direction getDirectionKey(std::string directionName) {
   return enums::NORTH;
 }
 
+/**
+ * The table where the robot would be on.
+ */
 class TableTop {
  public:
   Vector2 dimensions;
   TableTop(Vector2 _dimensions) : dimensions(_dimensions) {}
 };
 
+/**
+ * The robot that moves on the table.
+ */
 class Robot {
  public:
   Vector2 position = Vector2(-1, -1);
@@ -107,6 +116,9 @@ class Robot {
   void setDirection(enums::Direction direction) { this->direction = direction; }
 };
 
+/**
+ * A command that can be registered to the application to control the robot.
+ */
 class Command {
  public:
   virtual bool requireConfigured() { return true; };
@@ -114,6 +126,9 @@ class Command {
   virtual std::string run(std::string input, Robot* robot) { return ""; }
 };
 
+/**
+ * Encapsulates all the controls for the robot.
+ */
 class App {
  public:
   Robot* robot;
@@ -130,10 +145,16 @@ class App {
  public:
   void setRobot(Robot* _robot) { this->robot = _robot; }
 
- public:
-  std::string command(std::string input) {
+ private:
+  std::string clean(std::string input) {
     input = utils::toupper(input);
     utils::trim(input);
+    return input;
+  }
+
+ public:
+  std::string command(std::string input) {
+    input = this->clean(input);
     std::string prefix = utils::splitString(input, ' ')[0];
     std::string output;
     try {

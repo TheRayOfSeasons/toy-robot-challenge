@@ -1,3 +1,7 @@
+/**
+ * Bootstraps an entire app with preset configurations ready for use.
+ * This is done for consistency.
+ */
 App bootstrap() {
   Vector2 tableDimensions(5, 5);
   TableTop* table = new TableTop(tableDimensions);
