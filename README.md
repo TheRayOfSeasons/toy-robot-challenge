@@ -67,7 +67,7 @@ To clean up the image and container, simply run `docker-compose down`.
 
 ## Philosophy
 
-<img src="previews/architecture.jpg" alt="architecture" style="max-width: 588px;"/>
+<img src="previews/architecture.jpeg" alt="architecture" style="max-width: 588px;"/>
 <br />
 
 The code architecture has it's own an n-tier system similar to MVC. The key components are as follows:
