@@ -47,6 +47,14 @@ class PlaceCommand : public Command {
       utils::trim(direction);
       x = stoi(rawX);
       y = stoi(rawY);
+
+      // automatically ignore invalid X and Y
+      if (!robot->isValidX(x)) {
+        return "";
+      }
+      if (!robot->isValidY(y)) {
+        return "";
+      }
     } catch (std::exception& e) {
       // Fail softly. No need to do anything for invalid outputs.
       return "Invalid PLACE arguments. Should be using format like: PLACE "

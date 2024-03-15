@@ -104,5 +104,12 @@ int main() {
   app.command("PLACE -1,x,22");
   expects(app.command("report"), "Output: 4,0,SOUTH");
 
+  should("ignore place commands with coordinates that exceed the table's dimensios");
+  app.command("PLACE 7,1,NORTH");
+  app.command("PLACE 7,7,EAST");
+  app.command("PLACE 1,7,WEST");
+  app.command("PLACE 0,37,SOUTH");
+  expects(app.command("report"), "Output: 4,0,SOUTH");
+
   return 0;
 }

@@ -85,11 +85,30 @@ class Robot {
   void setTable(TableTop _tableTop) { this->table = _tableTop; }
 
  public:
-  void setX(int x) {
+  bool isValidX(int x) {
     if (x > this->table.dimensions.x) {
-      return;
+      return false;
     }
     if (x < 0) {
+      return false;
+    }
+    return true;
+  }
+
+ public:
+  bool isValidY(int y) {
+    if (y > this->table.dimensions.y) {
+      return false;
+    }
+    if (y < 0) {
+      return false;
+    }
+    return true;
+  }
+
+ public:
+  void setX(int x) {
+    if (!this->isValidX(x)) {
       return;
     }
     this->position.x = x;
@@ -97,10 +116,7 @@ class Robot {
 
  public:
   void setY(int y) {
-    if (y > this->table.dimensions.y) {
-      return;
-    }
-    if (y < 0) {
+    if (!this->isValidY(y)) {
       return;
     }
     this->position.y = y;
