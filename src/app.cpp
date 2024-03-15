@@ -22,7 +22,7 @@ int main() {
       break;
     }
     std::string output = app.command(input);
-    std::cout << output << std::endl;
+    std::cout << output;
   } while (true);
 
   return 0;

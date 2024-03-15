@@ -133,7 +133,7 @@ class ReportCommand : public Command {
   std::string run(std::string input, Robot* robot) override {
     std::string output = "Output: " + std::to_string(robot->position.x) + "," +
                          std::to_string(robot->position.y) + "," +
-                         getDirectionName(robot->direction);
+                         getDirectionName(robot->direction) + "\n";
     return output;
   }
 };
