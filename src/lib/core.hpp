@@ -113,7 +113,7 @@ class Robot {
   }
 
  public:
-  void setDirection(enums::Direction direction) { this->direction = direction; }
+  void setDirection(enums::Direction _direction) { this->direction = _direction; }
 };
 
 /**
