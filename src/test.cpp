@@ -22,7 +22,7 @@ void expects(std::string input, std::string output) {
   utils::trim(input);
   if (input != output) {
     std::string message = "Test Failed. Got " + input;
-    std::cout << message<< std::endl;
+    std::cout << message << std::endl;
     throw message;
   } else {
     std::cout << "Passed." << std::endl;
