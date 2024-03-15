@@ -25,11 +25,13 @@ class MoveCommand : public Command {
 };
 
 /**
- * A command that places the robot in an arbitrary position that the user desires.
+ * A command that places the robot in an arbitrary position that the user
+ * desires.
  */
 class PlaceCommand : public Command {
  public:
   bool requireConfigured() override { return false; };
+
  public:
   std::string run(std::string input, Robot* robot) override {
     int x, y;
@@ -50,20 +52,28 @@ class PlaceCommand : public Command {
       return "Invalid PLACE arguments. Should be using format like: PLACE "
              "0,0,NORTH";
     }
+    bool directionSet = false;
+    std::string invalidDirectionMessage =
+        "Received invalid direction. Should only be one of the following: "
+        "NORTH, WEST, SOUTH, EAST";
+    try {
+      directionSet = robot->setDirection(direction);
+    } catch (std::exception& e) {
+      return invalidDirectionMessage;
+    }
+    if (!directionSet) {
+      return invalidDirectionMessage;
+    }
+    // Direction should be valid first before setting position.
     robot->setX(x);
     robot->setY(y);
-    try {
-      robot->setDirection(direction);
-    } catch (std::exception& e) {
-      return "Received invalid direction. Should only be one of the following: "
-             "NORTH, WEST, SOUTH, EAST";
-    }
     return "";
   }
 };
 
 /**
- * A command that turns the robot left relative to the current direction it is facing.
+ * A command that turns the robot left relative to the current direction it is
+ * facing.
  */
 class LeftCommand : public Command {
  public:
@@ -89,7 +99,8 @@ class LeftCommand : public Command {
 };
 
 /**
- * A command that turns the robot right relative to the current direction it is facing.
+ * A command that turns the robot right relative to the current direction it is
+ * facing.
  */
 class RightCommand : public Command {
  public:

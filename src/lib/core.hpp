@@ -107,13 +107,14 @@ class Robot {
   }
 
  public:
-  void setDirection(std::string directionName) {
+  bool setDirection(std::string directionName) {
     enums::Direction _direction = getDirectionKey(directionName);
     if (_direction == enums::UNSET_DIRECTION) {
       // Forbidden to set direction to enums::UNSET_DIRECTION from string
-      return;
+      return false;
     }
     this->direction = _direction;
+    return true;
   }
 
  public:
