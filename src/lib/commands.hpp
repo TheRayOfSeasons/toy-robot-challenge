@@ -38,8 +38,11 @@ class PlaceCommand : public Command {
     std::vector<std::string> values = utils::splitString(rawValues, ',');
     try {
       std::string rawX = values[0];
+      utils::trim(rawX);
       std::string rawY = values[1];
+      utils::trim(rawY);
       direction = utils::toupper(values[2]);
+      utils::trim(direction);
       x = stoi(rawX);
       y = stoi(rawY);
     } catch (std::exception& e) {

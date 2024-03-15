@@ -43,7 +43,7 @@ enums::Direction getDirectionKey(std::string directionName) {
   } else if (directionName == "EAST") {
     return enums::EAST;
   }
-  return enums::NORTH;
+  return enums::UNSET_DIRECTION;
 }
 
 /**
@@ -109,6 +109,10 @@ class Robot {
  public:
   void setDirection(std::string directionName) {
     enums::Direction _direction = getDirectionKey(directionName);
+    if (_direction == enums::UNSET_DIRECTION) {
+      // Forbidden to set direction to enums::UNSET_DIRECTION from string
+      return;
+    }
     this->direction = _direction;
   }
 
